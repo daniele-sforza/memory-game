@@ -67,7 +67,7 @@ h1 {
 .deck .card.open {
   background: #027fe4;
   cursor: default;
-  font-size: 16px;
+  font-size: 20px;
   transition: font-size 0.5s;
 }
 
@@ -98,14 +98,14 @@ h1 {
 .deck .card.close {
   background: #ff0000;
   cursor: default;
-  font-size: 16px;
+  font-size: 20px;
   animation: jump 1s ease 0s 1 normal;
 }
 
 .deck .card.match {
   background: #27995b;
   cursor: default;
-  font-size: 16px;
+  font-size: 20px;
   transform: rotateZ(360deg);
   transition: transform 0.5s;
 }
