@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Memory Game</title>
   <meta name="description" content="">
-  <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-  <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
+  <link rel="stylesheet prefetch" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|BioRhyme" rel="stylesheet prefetch">
   <link rel="stylesheet" href="css/app.css">
 </head>
 
@@ -21,9 +21,9 @@
     <!-- show star rating, moves counter, timer and restart button -->
     <section class="score-panel">
       <ul class="stars">
-        <li><i class="fa fa-star"></i></li>
-        <li><i class="fa fa-star"></i></li>
-        <li><i class="fa fa-star"></i></li>
+        <li><i class="fas fa-star"></i></li>
+        <li><i class="fas fa-star"></i></li>
+        <li><i class="fas fa-star"></i></li>
       </ul>
 
       <span class="moves"></span> Moves
@@ -31,7 +31,7 @@
       <span class="timer">00:00</span> Timer
 
       <div class="restart">
-        <i class="fa fa-repeat"></i>
+        <i class="fas fa-redo"></i>
       </div>
     </section>
 
@@ -41,6 +41,15 @@
 
     <!-- container for the game results, default hidden -->
     <div class="results">
+      <div class="stats">
+        <div class="success">
+          <i class="fas fa-check"></i>
+        </div>
+        <h3>Congratulations!<br>You Won!</h3>
+        <table class="score">
+        </table>
+        <button type="button" name="button" class="btn-restart">Play again</button>
+      </div>
     </div>
   </div>
 

@@ -16,7 +16,7 @@ function shuffle(array) {
 
 
 // Create a list that holds all the cards
-let cards = ['fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-bolt', 'fa fa-cube', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-bomb', 'fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-bolt', 'fa fa-cube', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-bomb'];
+let cards = ['fab fa-html5', 'fab fa-css3-alt', 'fab fa-google', 'fab fa-js', 'fab fa-react', 'fab fa-github', 'fab fa-slack', 'fab fa-stack-overflow', 'fab fa-html5', 'fab fa-css3-alt', 'fab fa-google', 'fab fa-js', 'fab fa-react', 'fab fa-github', 'fab fa-slack', 'fab fa-stack-overflow'];
 
 
 // create a list of open cards
@@ -49,13 +49,16 @@ document.addEventListener('DOMContentLoaded', newGame);
 
 
 // deck selector
+const scorePanel = document.querySelector('.score-panel');
 const deck = document.querySelector('.deck');
 const results = document.querySelector('.results');
+const score = document.querySelector('.score');
 const timerDisplay = document.querySelector('.timer');
 
 
-// set reset button
+// set reset buttons
 document.querySelector('.restart').addEventListener('click', newGame);
+document.querySelector('.btn-restart').addEventListener('click', newGame);
 
 
 // starts a new game
@@ -86,6 +89,7 @@ function newGame() {
   });
 
   // show deck and hide results
+  scorePanel.style.display = "block";
   deck.style.display = "flex";
   results.style.display = "none";
 
@@ -140,16 +144,16 @@ function setMoves(counter) {
 
   if (counter === 0) {
     stars.forEach(function(star) {
-      star.className = "fa fa-star";
+      star.className = "fas fa-star";
       rating = 3;
     })
   }
   if (counter === 15) {
-    stars[2].classList.replace('fa-star', 'fa-star-o');
+    stars[2].classList.replace('fas', 'far');
     rating = 2;
   }
   if (counter === 20) {
-    stars[1].classList.replace('fa-star', 'fa-star-o');
+    stars[1].classList.replace('fas', 'far');
     rating = 1;
   }
 }
@@ -160,25 +164,28 @@ function gameTimer() {
   let now = Date.now() - start;
   let seconds = Math.floor((now / 1000) % 60).toString();
   let minutes = Math.floor(now / 1000 / 60).toString();
-  timerDisplay.textContent = minutes.padStart(2,"0") + ":" + seconds.padStart(2,"0");
+  timerDisplay.textContent = minutes.padStart(2, "0") + ":" + seconds.padStart(2, "0");
 }
 
 
 // display the card's symbol
 function openCard(card) {
-  card.classList.add('open', 'show');
+  card.classList.add('open');
 }
 
 
-// hide the card
+// hide the cards
 function closeCards(cardOne, cardTwo) {
-  cardOne.className = 'card close hide';
-  cardTwo.className = 'card close hide';
   setTimeout(function() {
-    cardOne.classList.remove('close', 'hide');
-    cardTwo.classList.remove('close', 'hide');
-    openCards = [];   // reset open cards list
-  }, 800);
+    cardOne.className = 'card close';
+    cardTwo.className = 'card close';
+  }, 500);
+
+  setTimeout(function() {
+    cardOne.classList.remove('close');
+    cardTwo.classList.remove('close');
+    openCards = []; // reset open cards list
+  }, 1500);
 }
 
 
@@ -186,22 +193,34 @@ function closeCards(cardOne, cardTwo) {
 function lockCards(cardOne, cardTwo) {
   cardOne.className = 'card match';
   cardTwo.className = 'card match';
-  openCards = [];   // reset open cards list
+  openCards = []; // reset open cards list
   matched++;
   if (matched === 8) {
     clearInterval(timer);
-    showResults();
+    setTimeout(function() {
+      showResults();
+    }, 500)
   }
 }
 
 
+// show game stats
 function showResults() {
+  scorePanel.style.display = "none";
   deck.style.display = "none";
   results.style.display = "flex";
-  results.innerHTML = `<ul><li><h3>Congratulations! You Won!</h3></li>
-  <li>Rating: ${rating} stars</li>
-  <li>Moves: ${moves}</li>
-  <li>Time: ${timerDisplay.textContent}</li></ul>`;
+  score.innerHTML = `<tr>
+    <td>Rating</td>
+    <td>${rating} stars</td>
+  </tr>
+  <tr>
+    <td>Moves</td>
+    <td>${moves}</td>
+  </tr>
+  <tr>
+    <td>Time</td>
+    <td>${timerDisplay.textContent}</td>
+  </tr>`;
 }
 
 
