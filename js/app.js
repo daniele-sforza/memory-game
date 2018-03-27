@@ -149,11 +149,13 @@ function setMoves(counter) {
     })
   }
   if (counter === 15) {
-    stars[2].classList.replace('fas', 'far');
+    // stars[2].classList.replace('fas', 'far');    replace() not supported in Edge
+    stars[2].className = "far fa-star";
     rating = 2;
   }
   if (counter === 20) {
-    stars[1].classList.replace('fas', 'far');
+    // stars[1].classList.replace('fas', 'far');    replace() not supported in Edge
+    stars[1].className = "far fa-star";
     rating = 1;
   }
 }
