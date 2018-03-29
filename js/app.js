@@ -15,11 +15,33 @@ function shuffle(array) {
 }
 
 
-// Create a list that holds all the cards
-let cards = ['fab fa-html5', 'fab fa-css3-alt', 'fab fa-google', 'fab fa-js', 'fab fa-react', 'fab fa-github', 'fab fa-slack', 'fab fa-stack-overflow', 'fab fa-html5', 'fab fa-css3-alt', 'fab fa-google', 'fab fa-js', 'fab fa-react', 'fab fa-github', 'fab fa-slack', 'fab fa-stack-overflow'];
+// elements selectors
+const scorePanel = document.querySelector('.score-panel');
+const deck = document.querySelector('.deck');
+const results = document.querySelector('.results');
+const score = document.querySelector('.score');
+const timerDisplay = document.querySelector('.timer');
 
 
-let openCards = [],         // list of open cards
+let cards = [
+  'fab fa-html5',
+  'fab fa-css3-alt',
+  'fab fa-google',
+  'fab fa-js',
+  'fab fa-react',
+  'fab fa-github',
+  'fab fa-slack',
+  'fab fa-stack-overflow',
+  'fab fa-html5',
+  'fab fa-css3-alt',
+  'fab fa-google',
+  'fab fa-js',
+  'fab fa-react',
+  'fab fa-github',
+  'fab fa-slack',
+  'fab fa-stack-overflow'
+  ],                        // create a list that holds all the cards
+    openCards = [],         // list of open cards
     moves = 0,              // moves counter
     rating = 3,             // rating in stars
     timer,                  // timer
@@ -30,14 +52,6 @@ let openCards = [],         // list of open cards
 
 // initialize new game after loading the DOM
 document.addEventListener('DOMContentLoaded', newGame);
-
-
-// deck selector
-const scorePanel = document.querySelector('.score-panel');
-const deck = document.querySelector('.deck');
-const results = document.querySelector('.results');
-const score = document.querySelector('.score');
-const timerDisplay = document.querySelector('.timer');
 
 
 // set reset buttons
@@ -74,8 +88,8 @@ function newGame(evnt) {
     let cardFragment = document.createDocumentFragment();
     for (let i = 0; i < cards.length; i++) {
       let newCard = document.createElement('li');
-      newCard.id = "card-" + i;
-      newCard.className = "card";
+      newCard.id = 'card-' + i;
+      newCard.className = 'card';
       newCard.innerHTML = `<i class="${cards[i]}"></i>`;
       cardFragment.appendChild(newCard);
     }
@@ -92,9 +106,9 @@ function newGame(evnt) {
   gameTimer(true);
 
   // show deck and hide results
-  scorePanel.style.display = "block";
-  deck.style.display = "flex";
-  results.style.display = "none";
+  scorePanel.style.display = 'block';
+  deck.style.display = 'flex';
+  results.style.display = 'none';
 
   // set up the event listener for the cards
   deck.addEventListener('click', checkCard);
@@ -138,18 +152,18 @@ function setMoves(counter) {
 
   if (counter === 0) {
     stars.forEach(function(star) {
-      star.className = "fas fa-star";
+      star.className = 'fas fa-star';
       rating = 3;
     })
   }
   if (counter >= 15) {
     // stars[2].classList.replace('fas', 'far');    replace() not supported in Edge
-    stars[2].className = "far fa-star";
+    stars[2].className = 'far fa-star';
     rating = 2;
   }
   if (counter >= 20) {
     // stars[1].classList.replace('fas', 'far');    replace() not supported in Edge
-    stars[1].className = "far fa-star";
+    stars[1].className = 'far fa-star';
     rating = 1;
   }
 }
@@ -164,7 +178,7 @@ function gameTimer(isLoaded) {
   }
   let secs = (seconds % 60).toString();
   let mins = Math.floor(seconds / 60).toString();
-  timerDisplay.textContent = mins.padStart(2, "0") + ":" + secs.padStart(2, "0");
+  timerDisplay.textContent = mins.padStart(2, '0') + ':' + secs.padStart(2, '0');
 }
 
 
@@ -210,9 +224,9 @@ function lockCards(cardOne, cardTwo) {
 
 // show game stats
 function showResults() {
-  scorePanel.style.display = "none";
-  deck.style.display = "none";
-  results.style.display = "flex";
+  scorePanel.style.display = 'none';
+  deck.style.display = 'none';
+  results.style.display = 'flex';
   score.innerHTML = `<tr>
     <td>Rating</td>
     <td>${rating} stars</td>
