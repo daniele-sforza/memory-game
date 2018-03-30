@@ -35,6 +35,10 @@ h1 {
   font-weight: 700;
 }
 
+h4 {
+  color: red;
+}
+
 /*
  * Styles for the deck of cards
  */
@@ -174,12 +178,14 @@ h1 {
   animation: appear 2s ease 0s 1 normal;
 }
 
-.stats {
+.stats,
+.leaderboard {
   width: 100%;
   text-align: center;
 }
 
-.score {
+.score,
+.leaderboard-table {
   margin: auto;
   padding: 15px 0;
 }
@@ -190,6 +196,19 @@ h1 {
 }
 
 .score td:first-of-type {
+  font-weight: bold;
+}
+
+.leaderboard {
+  display: none;
+}
+
+.leaderboard-table td {
+  padding: 0 10px;
+  text-align: left;
+}
+
+.leaderboard-table tr:nth-of-type(1) {
   font-weight: bold;
 }
 
@@ -219,6 +238,10 @@ h1 {
   animation: bounce-in 1.5s ease 1.5s 1 normal forwards;
 }
 
+.play-again {
+  padding-top: 10px; 
+}
+
 .btn-restart {
   color: white;
   font-size: 16px;
@@ -242,6 +265,28 @@ h1 {
   background-color: #ffa800;
   box-shadow: 0 5px rgba(46, 61, 73, 0.5);
   transform: translateY(4px);
+}
+
+.btn-save {
+  color: white;
+  background-color: blue;
+  border: solid blue 1px;
+  border-radius: 10px;
+  outline: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: "BioRhyme", cursive;
+  padding: 2px;
+}
+
+.name {
+  font-size: 16px;
+  font-weight: bold;
+  font-family: "BioRhyme", cursive;
+  padding: 0 5px;
+  border: solid blue 1px;
+  border-radius: 10px;
+  outline: none;
 }
 
 /* Media queries breakpoints */
